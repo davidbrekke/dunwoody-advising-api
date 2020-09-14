@@ -6,7 +6,7 @@ dunwoody senior project by David Magnuson and Anders Nelson
 make sure to have yarn installed <br/>
 `npm install -g yarn` (might need sudo permissions)<br/>
 clone repository then install dependencies<br/>
-`yarn add` (npm install equivilent)
+`yarn install` (npm install equivilent)
 
 ## Available Scripts
 
