@@ -1,3 +1,4 @@
+/* 
 const courses = [
     {
         id: 1,
@@ -5,7 +6,6 @@ const courses = [
         name: 'Software Architecture',
         credits: 3,
         required: true,
-        instructors: ['Joe Axberg'],
         category: 'technical',
         instructionType: ['lecture', 'lab']
     },
@@ -15,7 +15,6 @@ const courses = [
         name: 'Software Design',
         credits: 4,
         required: true,
-        instructors: ['LeAnn Simonson'],
         category: 'technical',
         instructionType: ['lecture', 'lab']
     },
@@ -25,7 +24,6 @@ const courses = [
         name: 'Data Introduction',
         credits: 3,
         required: true,
-        instructors: ['Paula Merns'],
         category: 'technical',
         instructionType: ['lecture', 'lab']
     },
@@ -35,12 +33,11 @@ const courses = [
         name: 'Database Systems',
         credits: 4,
         required: true,
-        instructors: ['LeAnn Simonson'],
         category: 'technical',
         instructionType: ['lecture', 'lab']
     },
 ]
-/* 
+
 const programs = [
     {
         id: 1,
@@ -84,11 +81,13 @@ const users = [
 ]
 */
 
-
-
 const resolvers = {
     Query: {
-        courses: () => courses,
+        // get all courses
+        courses: () => {
+            return courses
+        },
+        // get course 
     },
 };
 

@@ -11,10 +11,12 @@ type Course {
     credits: Int!
     program: Program
     required: Boolean!
-    instructors: [String]    
     category: String! # {arts & science, technical}
     subCategory: String # {humanities, social science, math...}
     instructionType: [String] # {lecture, lab, studio}
+    seasonOffered: String # {spring, summer, fall, all}
+    dateAdded: String!
+    dateUpdated: [String]
   }
   type Program {
     id: ID!
@@ -33,6 +35,8 @@ type Course {
     student: User
     terms: [Term]!
     approvalStatus: String! # {n/a, notApproved, pending, approved}
+    dateAdded: String!
+    dateUpdated: [String]
   }
   type User {
     id: ID!
@@ -62,9 +66,10 @@ type Course {
     year: String!
     courses: [Course]!
     credits: Int
+    dateAdded: String!
+    dateUpdated: [String]
   }
  
-
   # QUERIES
   type Query {
     courses: [Course]
@@ -73,5 +78,4 @@ type Course {
     academicPlans: [AcademicPlan]
   }
 `;
-
 module.exports = typeDefs;
