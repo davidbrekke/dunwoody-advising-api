@@ -15,6 +15,6 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app using nodemon<br />
-Open [http://localhost:4000/graphql](http://localhost:4000/graphql) to view it in the browser with qraphiql.
+Open [http://localhost:4000/](http://localhost:4000/) to view it in the browser with apollo playground.
 
 The page will reload if you make edits thx to nodemon<br />
