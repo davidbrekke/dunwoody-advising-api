@@ -4,7 +4,10 @@ const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 
 // creating server and passing in our type definitions from schema file
-const server = new ApolloServer({ typeDefs, resolvers, playground: true, introspection: true });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+});
 
 // server listen
 server.listen().then(({ url }) => {

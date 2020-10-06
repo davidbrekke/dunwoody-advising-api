@@ -1,94 +1,57 @@
-/* 
-const courses = [
-    {
-        id: 1,
-        code: 'SENG3210',
-        name: 'Software Architecture',
-        credits: 3,
-        required: true,
-        category: 'technical',
-        instructionType: ['lecture', 'lab']
-    },
-    {
-        id: 2,
-        code: 'SENG3110',
-        name: 'Software Design',
-        credits: 4,
-        required: true,
-        category: 'technical',
-        instructionType: ['lecture', 'lab']
-    },
-    {
-        id: 3,
-        code: 'SENG3300',
-        name: 'Data Introduction',
-        credits: 3,
-        required: true,
-        category: 'technical',
-        instructionType: ['lecture', 'lab']
-    },
-    {
-        id: 4,
-        code: 'SENG3310',
-        name: 'Database Systems',
-        credits: 4,
-        required: true,
-        category: 'technical',
-        instructionType: ['lecture', 'lab']
-    },
-]
-
-const programs = [
-    {
-        id: 1,
-        code: 'SENG',
-        name: 'Software Engineering',
-        credits: 121,
-    }
-]
-const terms = [
-    {
-        id: 1,
-        season: 'fall',
-        year: 2020,
-        courses: [courses[0], courses[1], courses[2]]
-    }
-]
-const academicPlans = [
-    {
-        id: 1,
-        name: 'Software Engineering',
-        program: programs[0],
-        approvalStatus: 'n/a',
-        terms: [terms[0]]
-    }
-]
-const students = [
-    {
-        academicPlans: [academicPlans[0]],
-        program: programs[0]
-    }
-]
-const users = [
-    {
-        id: 1,
-        first_name: 'David',
-        last_name: 'Magnuson',
-        email: 'magdavj@dunwoody.edu',
-        password: '1234',
-        role: students[0]
-    }
-]
-*/
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
 const resolvers = {
     Query: {
         // get all courses
-        courses: () => {
+        async courses(parent, args, context, info) {
+            const courses = await prisma.cOURSE_TBL.findMany()
             return courses
         },
-        // get course 
+        // get single course by id
+        async course(parent, args, context, info) {
+            const course = await prisma.cOURSE_TBL.findOne({ where: { course_id: args.id}})
+            return course
+        }
     },
-};
+    Mutation: {
+        // create a course
+        createCourse: async (parent, args, context, info) => {
+            const course = await prisma.cOURSE_TBL.create({
+                data: {
+                    course_code: args.course_code,
+                    required: args.required,
+                    category: args.category,
+                    instruction_type: args.instruction_type
+                }
+            })
+            return course
+        },
+        // update a course
+        updateCourse: async (parent, args, context, info) => {
+            const course = await prisma.cOURSE_TBL.update({
+                data: {
+                    course_code: args.course_code,
+                    required: args.required,
+                    category: args.category,
+                    instruction_type: args.instruction_type
+                },
+                where: {
+                    course_id: args.course_id
+                }
+            })
+            return course
+        },
+        // delete a course
+        deleteCourse: async (parent, args, context, info) => {
+            const course = await prisma.cOURSE_TBL.delete({
+                where: {
+                    course_id: args.course_id
+                }
+            })
+            return course
+        }
+    }
+}
 
 module.exports = resolvers;

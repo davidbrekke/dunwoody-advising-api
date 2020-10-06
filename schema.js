@@ -3,20 +3,20 @@ const { gql } = require('apollo-server'); // install Apollo GraphQL extention fo
 const typeDefs = gql`
 # TYPES
 type Course {
-    course_id: ID!
+    course_id: Int
     course_code: String # ex: SENG3210
-    name: String # ex: Software Architecture
+    #name: String # ex: Software Architecture
     course_desc: String
-    prereqs: [Course]
-    credits: Int
-    program: Program
-    required: Boolean!
+    #prereqs: [Course]
+    #credits: Int
+    #program: Program
+    required: String
     category: String # {arts & science, technical}
-    sub_category: String # {humanities, social science, math...}
-    instruction_type: [String] # {lecture, lab, studio}
-    seasonOffered: String # {spring, summer, fall, all}
-    dateAdded: String
-    dateUpdated: [String]
+    #sub_category: String # {humanities, social science, math...}
+    instruction_type: String # lecture/lab
+    #seasonOffered: String # {spring, summer, fall, all}
+    #dateAdded: String
+    #dateUpdated: [String]
   }
   type Program {
     id: ID!
@@ -73,9 +73,16 @@ type Course {
   # QUERIES
   type Query {
     courses: [Course]
-    course(id: ID!): Course
+    course(id: Int!): Course
     programs: [Program]
     academicPlans: [AcademicPlan]
   }
+
+# MUTATIONS 
+type Mutation {
+  createCourse(course_code: String, required: Boolean, category: String, instruction_type: String): Course
+  updateCourse(course_id: Int, instruction_type: String, category: String, course_code: String, required: Boolean): Course
+  deleteCourse(course_id: Int): Course
+}
 `;
 module.exports = typeDefs;
