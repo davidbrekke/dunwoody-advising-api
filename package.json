@@ -6,7 +6,7 @@
   "author": "david magnuson & anders nelson",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server"
+    "dev": "nodemon server"
   },
   "dependencies": {
     "apollo-server": "^2.18.0",
