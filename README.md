@@ -4,16 +4,17 @@ dunwoody senior project by David Magnuson and Anders Nelson
 
 ## using yarn instead of npm
 make sure to have yarn installed <br/>
-`npm install -g yarn` (might need sudo permissions)<br/>
+    `npm install -g yarn` (might need sudo permissions)<br/>
 clone repository then install dependencies<br/>
-`yarn install` (npm install equivilent)
+    `yarn install` (npm install equivilent)
 
 ## add and set up prisma (graphql mysql ORM)
-
-`npx prisma` invoke prisma cli
-`npx prisma init` inits prisma in your project and creates prisma folder with schema.prisma and .env file
-in /prisma/schema.prisma change 'provider' to mysql
-in /prisma/.env edit the database url to your credentials 
+invoke prisma cli<br/>
+    `npx prisma` <br/>
+init prisma in your project and create prisma folder with schema.prisma and .env file<br/>
+    `npx prisma init` <br/>
+in /prisma/schema.prisma change 'provider' to mysql<br/>
+in /prisma/.env edit the database url to your credentials <br/>
 'introspect' your db with `npx prisma introspect` which creates a prisma schema based on the db, in the schema.prisma file
 
 ## Available Scripts
