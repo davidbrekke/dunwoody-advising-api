@@ -3,19 +3,19 @@ const { gql } = require('apollo-server'); // install Apollo GraphQL extention fo
 const typeDefs = gql`
 # TYPES
 type Course {
-    id: ID!
-    code: String! # ex: SENG3210
-    name: String! # ex: Software Architecture
-    description: String!
+    course_id: ID
+    course_code: String # ex: SENG3210
+    name: String # ex: Software Architecture
+    course_desc: String
     prereqs: [Course]
-    credits: Int!
+    credits: Int
     program: Program
     required: Boolean!
-    category: String! # {arts & science, technical}
-    subCategory: String # {humanities, social science, math...}
-    instructionType: [String] # {lecture, lab, studio}
+    category: String # {arts & science, technical}
+    sub_category: String # {humanities, social science, math...}
+    instruction_type: [String] # {lecture, lab, studio}
     seasonOffered: String # {spring, summer, fall, all}
-    dateAdded: String!
+    dateAdded: String
     dateUpdated: [String]
   }
   type Program {
