@@ -19,55 +19,32 @@ type Course {
     #dateUpdated: [String]
   }
   type Program {
-    id: ID!
-    code: String! # SENG
-    name: String! # software engineering
-    description: String
-    credits: Int!
-    advisors: [User]
-    students: [User]
-    academicPlans: [AcademicPlan]
+    program_id: Int
+    program_code: String # SENG
+    program_name: String # software engineering
+    program_description: String
+    program_credits: Int
+    #advisors: [User]
+    #students: [User]
+    #academicPlans: [AcademicPlan]
   }
   type AcademicPlan {
     id: ID!
     name: String!
     program: Program!
-    student: User
+    #student: User
     terms: [Term]!
     approvalStatus: String! # {n/a, notApproved, pending, approved}
     dateAdded: String!
     dateUpdated: [String]
   }
-  type User {
-    id: ID!
-    first_name: String
-    last_name: String
-    email: String!
-    password: String!
-    role: RoleType!
-  }
-  enum RoleType {
-    Admin
-    Student
-    Advisor
-  }
-  type Student {
-    advisor: Advisor
-    academicPlans: [AcademicPlan]
-    program: Program
-  }
-  type Advisor {
-    students: [Student]
-    program: Program
-  }
+
   type Term {
-    id: ID!
-    season: String!
-    year: String!
-    courses: [Course]!
-    credits: Int
-    dateAdded: String!
-    dateUpdated: [String]
+    term_id: Int
+    season: String
+    class_level: String
+    #dateAdded: String!
+    #dateUpdated: [String]
   }
  
   # QUERIES
@@ -75,7 +52,9 @@ type Course {
     courses: [Course]
     course(id: Int!): Course
     programs: [Program]
-    academicPlans: [AcademicPlan]
+    program(id: Int, code: String): Program
+    terms: [Term]
+    term(id: Int!): Term
   }
 
 # MUTATIONS 
@@ -83,6 +62,10 @@ type Mutation {
   createCourse(course_code: String, required: Boolean, category: String, instruction_type: String): Course
   updateCourse(course_id: Int, instruction_type: String, category: String, course_code: String, required: Boolean): Course
   deleteCourse(course_id: Int): Course
+
+  createProgram(program_code: String, program_name: String, program_description: String, program_credits: Int): Program
+
+  createTerm(season: String): Term
 }
 `;
 module.exports = typeDefs;
