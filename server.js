@@ -10,3 +10,5 @@ const server = new ApolloServer({ typeDefs, resolvers, playground: true, introsp
 server.listen().then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
   });
+
+  //anders test 1022
