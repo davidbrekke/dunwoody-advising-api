@@ -1,4 +1,4 @@
-dunwoody advising API
+dunwoody graphql API server
 
 dunwoody senior project by David Magnuson and Anders Nelson
 
@@ -20,3 +20,7 @@ Runs the app using nodemon<br />
 Open [http://localhost:4000/](http://localhost:4000/) to view it in the browser with apollo playground.
 
 The page will reload if you make edits thx to nodemon<br />
+
+### `yarn start`
+
+Runs the app

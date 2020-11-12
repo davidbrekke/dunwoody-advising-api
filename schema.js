@@ -1,27 +1,27 @@
-const { gql } = require('apollo-server'); // install Apollo GraphQL extention for syntax highlighting
+const { gql } = require('apollo-server') // install Apollo GraphQL extention for syntax highlighting
 
 const typeDefs = gql`
 #/* ---------------------- TYPES --------------------- */
 type Course {
     course_id: Int
-    course_code: String # ex: SENG3210
-    #name: String # ex: Software Architecture
-    course_desc: String
+    course_code: String
+    #name: String
+    course_description: String
     #prereqs: [Course]
     #credits: Int
     #program: Program
     required: String
-    category: String # {arts & science, technical}
-    sub_category: String # {humanities, social science, math...}
-    instruction_type: String # {lecture, lab, studio}
-    #seasonOffered: String # {spring, summer, fall, all}
+    category: String 
+    sub_category: String 
+    instruction_type: String 
+    #seasonOffered: String
     #dateAdded: String
     #dateUpdated: [String]
   }
   type Program {
     program_id: Int
-    program_code: String # SENG
-    program_name: String # software engineering
+    program_code: String 
+    program_name: String 
     program_description: String
     program_credits: Int
     #advisors: [User]
@@ -57,13 +57,13 @@ type Course {
 
   #/* ---------------------- MUTATIONS --------------------- */  
 type Mutation {
-  createCourse(course_code: String, required: Int, category: String, instruction_type: String): Course
-  updateCourse(course_id: Int, instruction_type: String, category: String, course_code: String, required: Int): Course
+  createCourse(course_code: String, course_description: String, instruction_type: String): Course
   deleteCourse(course_id: Int): Course
+  updateCourse(course_id: Int, instruction_type: String, category: String, course_code: String, required: Int): Course
 
   createProgram(program_code: String, program_name: String, program_description: String, program_credits: Int): Program
 
   createTerm(season: String): Term
 }
-`;
-module.exports = typeDefs;
+`
+module.exports = typeDefs
